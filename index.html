@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Color Changer</title>
+  <style>
+    /* Style général */
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f5f5f5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    .container {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    h1 {
+      color: #333;
+      margin-bottom: 30px;
+    }
+
+    #color-box {
+      width: 250px;
+      height: 250px;
+      background-color: #3498db;
+      margin: 0 auto 20px auto;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transition: background-color 0.4s ease;
+    }
+
+    #change-color-btn {
+      padding: 12px 25px;
+      background-color: #2ecc71;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    #change-color-btn:hover {
+      background-color: #27ae60;
+    }
+
+    @media (max-width: 600px) {
+      #color-box {
+        width: 200px;
+        height: 200px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Color Changer</h1>
+    <div id="color-box"></div>
+    <button id="change-color-btn">Change Color</button>
+  </div>
+
+  <script>
+    // Fonction qui génère une couleur hexadécimale aléatoire
+    function getRandomColor() {
+      const letters = '0123456789ABCDEF';
+      let color = '#';
+      for (let i = 0; i < 6; i++) {
+        color += letters[Math.floor(Math.random() * 16)];
+      }
+      return color;
+    }
+
+    // Une fois le DOM chargé, on active l’interactivité
+    document.addEventListener('DOMContentLoaded', () => {
+      const colorBox = document.getElementById('color-box');
+      const changeColorBtn = document.getElementById('change-color-btn');
+
+      // Quand on clique, on change la couleur du carré
+      changeColorBtn.addEventListener('click', () => {
+        const newColor = getRandomColor();
+        colorBox.style.backgroundColor = newColor;
+      });
+    });
+  </script>
+</body>
+</html>
